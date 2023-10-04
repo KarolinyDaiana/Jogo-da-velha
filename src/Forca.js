@@ -16,6 +16,11 @@ export default function Forca({
             </Text>
 
             <Text>{palavra} </Text>
+            <TextInput placeholder="Letra..." value={letra}/>
+            <TextInput placeholder="Palavra..." value={palavra}/>
+
+            <Text>Nome do jogador {player1}</Text>
+            <Button title="Clique aqui" onPress={chooseWord}/>
         </View>
     )
 }
