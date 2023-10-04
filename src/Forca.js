@@ -1,26 +1,21 @@
 import { useState } from "react";
-import { View, Text, Button, TextInput, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, Button } from "react-native";
 
 export default function Forca({
     changeScreen,
-    player1,
-    player2
+    palavraForca
 }) {
 
-    const letra = "";
-    const palavra = "";
+    const palavra = palavraForca.toUpperCase().split('');
 
+    
     return (
         <View>
             <Text>
                 Olá esta é a forca
             </Text>
 
-            <TextInput placeholder="Letra..." value={letra}/>
-            <TextInput placeholder="Palavra..." value={palavra}/>
-
-            <Text>Nome do jogador {getPlayerName}</Text>
-            <Button title="Clique aqui" onPress={chooseWord}/>
+            <Text>{palavra} </Text>
         </View>
     )
 }
