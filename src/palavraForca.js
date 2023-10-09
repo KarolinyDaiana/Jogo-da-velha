@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View, Text, Button, TextInput } from "react-native";
+import { View, Button, TextInput } from "react-native";
 
 export default function PalavraForca({
     changeScreen,
