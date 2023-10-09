@@ -24,7 +24,7 @@ export default function Forca({
         if (tentativasRestantes === 0) {
           setStatusJogo("Você perdeu! A palavra era: " + palavraForca);
         }
-      }, [mascaraPalavra, tentativasRestantes, palavraForca]);
+      }, [mascaraPalavra, tentativasRestantes]);
 
     const handlePalpite = () => {
         const letraChutada = chute.toUpperCase();
