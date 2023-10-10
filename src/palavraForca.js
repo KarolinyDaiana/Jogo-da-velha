@@ -19,7 +19,7 @@ export default function PalavraForca({
         <View>
 
             <TextInput placeholder="Digite a palavra" value={palavra} onChangeText={setPalavra}/>
-            <Button title="Clique aqui" onPress={handleClick}/>
+            <Button title="Enviar palavra" onPress={handleClick}/>
             
         </View>
     )
