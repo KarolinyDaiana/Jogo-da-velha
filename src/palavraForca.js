@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View, Button, TextInput } from "react-native";
+import { StyleSheet, View, Button, TextInput } from "react-native";
 
 export default function PalavraForca({
     changeScreen,
@@ -16,11 +16,29 @@ export default function PalavraForca({
     }
 
     return (
-        <View>
+        <View styles={styles.container}>
 
-            <TextInput placeholder="Digite a palavra" value={palavra} onChangeText={setPalavra}/>
-            <Button title="Enviar palavra" onPress={handleClick}/>
+            <TextInput 
+                placeholder="Digite a palavra" 
+                value={palavra} 
+                onChangeText={setPalavra}
+            />
+            <Button 
+                color='09b092'
+                title="Enviar palavra" 
+                onPress={handleClick}
+            />
             
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      gap: 10,  
+      backgroundColor: '#e18fff',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+  })
