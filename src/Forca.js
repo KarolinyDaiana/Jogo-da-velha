@@ -15,15 +15,17 @@ export default function Forca({
     );
     const [tentativasRestantes, setTentativasRestantes] = useState(6);
 
-    const boneco = ["O-|-<", "O-|-/", "O-|-", "O-!-", "O--", "O", "x"]
+    const boneco = ["-", "-O", "-O--", "-O-!-", "-O-|-", "-O-|-/", "-O-|-<"]
 
     useEffect(() => {
         if (!mascaraPalavra.includes("_")) {
           alert('Você ganhou! A palavra era: ' + palavraForca);
+          goBack();
         }
     
         if (tentativasRestantes === 0) {
           alert('Você perdeu! A palavra era: ' + palavraForca);
+          goBack();
         }
       }, [mascaraPalavra, tentativasRestantes]);
 
@@ -77,26 +79,42 @@ export default function Forca({
 
     return (
       <View style={styles.body}>
-        <View style={styles.jogo}>
-              <Text>Bem vindo ao jogo da forca!</Text>
-              <Text>Palavra da vez: {mascaraPalavra}</Text>
-
-              <Text>Dê o palpite da letra: </Text>
-              <TextInput
-              placeholder="......"
-              value={chute}
-              onChangeText={setChute}
-              maxLength={1}
-          />
-        
-          <Button title="Palpitar" onPress={handlePalpite} />
-
-          <Button title="Voltar" onPress={goBack} />
-        </View>
 
         <View style={styles.boneco}>
             {getBoneco(tentativasRestantes)}
-           </View>
+        </View>
+
+        <View style={styles.jogo}>
+          <Text style={styles.titulo}>Palavra da vez: {mascaraPalavra}</Text>
+
+          <View style={styles.input}>
+            <TextInput
+              style={styles.textInput}
+              placeholder="Palpite..."
+              value={chute}
+              onChangeText={setChute}
+              maxLength={1}
+            />
+        
+            <Button 
+              color="#09a092"
+              title="Palpitar" 
+              onPress={handlePalpite} 
+              />
+              
+          </View>
+              
+            {letrasChutadas}
+        </View>
+
+      
+        <Button
+            borderRadius="5px"
+            color="#09b092" 
+            title="Voltar" 
+            onPress={goBack} 
+          />
+
       </View>
         
     )
@@ -105,16 +123,31 @@ export default function Forca({
 const styles = StyleSheet.create({
   body: {
     display: "flex",
-    flexDirection: "row",
-    gap: "50px"
+    flexDirection: "column",
+    gap: "30px"
   },
   jogo: {
     display: "flex",
     flexDirection: "column",
-    gap: "10px"
+    gap: "10px",
+    alignItems: "center",
+    justifyContent: "center",
   },
   boneco: {
     transform: "rotate(90deg) scale(1.5)",
-    width: "100px"
+    width: "50px"
+  },
+  textInput: {
+    color: '#125c4e',
+    backgroundColor: '#41d9bd',
+    padding: 5,
+    borderRadius: 5,
+  },
+  titulo: {
+    fontWeight: "bold",
+    fontSize: 18,
+  },
+  input: {
+    flexDirection: "row"
   }
 })

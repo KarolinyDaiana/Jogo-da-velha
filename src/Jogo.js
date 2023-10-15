@@ -94,8 +94,7 @@ export default function Jogo({
   const getPlayerName = () => player === "X" ? player1 : player2;
   console.log("Olá")
   return (
-    <View>
-      <Button title="Voltar" onPress={goBack} />
+    <View style={styles.body}>
 
       <Text>
         É a vez do jogador: {getPlayerName()} - {player}
@@ -121,17 +120,30 @@ export default function Jogo({
           )
         })
       }
+
+      <Button 
+        color='#09bd9c'
+        title="Voltar" 
+        onPress={goBack} 
+      />
+
     </View>
   )
 }
 
 const styles = StyleSheet.create({
+  body: {
+    backgroundColor: '#9effd3',
+    flex: 1,
+    gap: 10,
+    padding: 100,
+  },
   line: {
     display: "flex",
     flexDirection: "row"
   },
   buttonGame: {
-    backgroundColor: 'red',
+    backgroundColor: '#2bccae',
     width: 80,
     height: 80,
     margin: 2,
@@ -141,6 +153,6 @@ const styles = StyleSheet.create({
   },
   buttonGameFont: {
     fontSize: 50,
-    color: "#fff"
+    color: "#125c4e"
   }
 });

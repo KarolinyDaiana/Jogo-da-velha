@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     gap: 10,  
-    backgroundColor: '#e18fff',
+    backgroundColor: '#9effd3',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -60,6 +60,7 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: '30px',
+    fontWeight: 'bold',
   },
   text: {
     fontSize: '18px',

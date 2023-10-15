@@ -10,21 +10,32 @@ export default function PalavraForca({
 
     const handleClick = () => {
         if(mudarPalavra) {
-            mudarPalavra(palavra)
-            changeScreen("Forca")
+            if(palavra.length === 0) {
+                alert("A palavra não pode estar vazia!")
+                return
+            } else if(palavra.includes(" ")) {
+                alert("A palavra não pode conter espaços!")
+            } else {
+                mudarPalavra(palavra)
+                changeScreen("Forca")
+            }
         }
     }
 
     return (
         <View styles={styles.container}>
 
+            <Text>popipopipopopipo</Text>
+
             <TextInput 
+                style={styles.textInput}
                 placeholder="Digite a palavra" 
                 value={palavra} 
                 onChangeText={setPalavra}
             />
+
             <Button 
-                color='09b092'
+                color='#09b092'
                 title="Enviar palavra" 
                 onPress={handleClick}
             />
@@ -36,9 +47,15 @@ export default function PalavraForca({
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      gap: 10,  
-      backgroundColor: '#e18fff',
+      gap: 50,  
+      backgroundColor: '#9effd3',
       alignItems: 'center',
       justifyContent: 'center',
     },
+    textInput: {
+        color: '#125c4e',
+        backgroundColor: '#41d9bd',
+        padding: 5,
+        borderRadius: 5,
+      },
   })
