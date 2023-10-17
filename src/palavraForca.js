@@ -25,8 +25,6 @@ export default function PalavraForca({
     return (
         <View styles={styles.container}>
 
-            <Text>popipopipopopipo</Text>
-
             <TextInput 
                 style={styles.textInput}
                 placeholder="Digite a palavra" 
