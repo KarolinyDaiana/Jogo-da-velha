@@ -27,7 +27,7 @@ export default function Forca({
           alert('Você perdeu! A palavra era: ' + palavraForca);
           goBack();
         }
-      }, [mascaraPalavra, tentativasRestantes]);
+    }, [mascaraPalavra, tentativasRestantes]);
 
       useEffect(() => {
         const novaMascara = palavra.map((letra) =>

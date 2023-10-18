@@ -1,5 +1,14 @@
+//padrao react
 import { useState } from 'react';
+//bibliotecas
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+//proprio
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import Pagina1 from './Pagina1';
+import Pagina2 from './pagina2';
+
+const Stack = createNativeStackNavigator();
 
 export default function Home({
   changeScreen
@@ -16,6 +25,10 @@ export default function Home({
   const handleClick3 = () => {
       changeScreen("Nomes")
   }
+
+  const handleClick4 = () => {
+    changeScreen("Teste")
+}
 
   return (
     <View style={styles.container}>
@@ -41,6 +54,26 @@ export default function Home({
           title='Iniciar jogo da memória' 
           onPress={handleClick3}
         />
+
+        <Button
+          title='Teste memo'
+          onPress={handleClick4}
+        />
+
+{/* isso colocar sozinho */}
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen name="Home" component={({ navigation }) => <View>
+                <Text>Home</Text>
+                <Button onPress={() => {navigation.navigate("Pagina1")}} />
+                <Button onPress={() => {navigation.navigate("Pagina2")}} />
+              </View>} />
+            <Stack.Screen name="Pagina1" component={Pagina1} />
+            <Stack.Screen name="Pagina2" component={Pagina2} />
+
+          </Stack.Navigator>
+        </NavigationContainer>
+
       </View>
     </View>
   );

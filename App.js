@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import Home from './src/Home';
@@ -8,6 +8,7 @@ import PalavraForca from './src/PalavraForca';
 import Forca from './src/Forca';
 import JogoMemoria from './src/JogoMemoria';
 import Nomes from './src/Nomes';
+import Teste from './src/teste';
 
 export default function App() {
   const [screen, setScreen] = useState("home");
@@ -77,6 +78,12 @@ export default function App() {
           changeScreen={changeScreen}
         />
       )}
+
+      {checkScreen('Teste') && (
+        <Teste
+          changeScreen={changeScreen}
+        />
+      )}
     </View>
   );
 }
@@ -89,3 +96,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+
