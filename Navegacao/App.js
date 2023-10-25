@@ -1,33 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
-import { useMemo, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import Teste from './src/teste';
-import Home from './src/Home';
+import HomeScreen from './src/HomeScreen';
+import UserData from './src/UserData';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-
-  const [screen, setScreen] = useState("home");
-
-  const changeScreen = (newScreen) => setScreen(newScreen);
-
-  const checkScreen = (screenName) => screenName === screen;
-
   return (
-    <View style={styles.container}>
-  
-        {checkScreen("home") && (
-        <Home
-          changeScreen={changeScreen}
-        />
-        )}
-
-        {checkScreen('Teste') && (
-        <Teste
-          changeScreen={changeScreen}
-        />
-        )}
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="UserData" component={UserData} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
@@ -35,5 +23,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
