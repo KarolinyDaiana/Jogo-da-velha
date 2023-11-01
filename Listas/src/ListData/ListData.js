@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Alert, Button, Text, TextInput, View } from "react-native";
+import { Button, Text, TextInput, View } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import metadata from './../storage.metadata.json';
 
@@ -31,7 +31,10 @@ const ListData = () => {
             <TextInput placeholder="Lista: " value={name} onChangeText={setListName}/>
             <Text>{name}</Text>
 
-            <Button placeholder="Salvar" onPress={handleClick}/>
+            <Button 
+                title='Salvar'
+                onPress={handleClick}
+            />
         </View>
     );
 }

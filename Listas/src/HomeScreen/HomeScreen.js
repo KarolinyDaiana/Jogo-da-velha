@@ -34,7 +34,6 @@ const HomeScreen = ({ navigation }) => {
                 
             </View>
 
-
             <Button
                 title="Listas"
                 onPress={() => navigation.navigate("ListData")}
