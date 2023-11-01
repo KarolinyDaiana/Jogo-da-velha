@@ -1,5 +1,8 @@
 {
-    "NOMELISTA": {
-        "NOME": "nomedalista"
+    "NAME": {
+        "LISTNAME": "LISTNAME"
+    },
+    "DATE": {
+        "LISTDATE": "LISTDATE"
     }
 }
