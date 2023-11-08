@@ -6,9 +6,10 @@ import { useIsFocused } from '@react-navigation/native';
 
 const ListItems = ({ navigation}) => {
     const [item, setItemName] = useState("");
+    const [items, setItems] = useState([]);
     const isFocused = useIsFocused();
     useEffect(() => { getItemName() }, [isFocused]);
-    // useEffect(() => { saveListName() }, [name]);
+    useEffect(() => { saveListItem() }, [name]);
 
     const getItemName = async () => {
         const itemName = await AsyncStorage.getItem(metadata.ITEM.LISTITEM);
@@ -17,21 +18,22 @@ const ListItems = ({ navigation}) => {
         }
     }
 
-    // const saveListName = async () => {
-    //     const saveName = name || "";
-    //     await AsyncStorage.setItem(metadata.NAME.LISTNAME, saveName);
-    // }
+    const saveListItem = async () => {
+        const saveItem = item || "";
+        await AsyncStorage.setItem(metadata.ITEM.LISTITEM, saveName);
+        setItems([...items, saveItem]);
+    }
 
-    // const handleClick = () => {
-    //     setListName(name);
-    //     navigation.navigate("ListData")
-    // }
+    const handleClick = () => {
+        setItemName(item);
+        navigation.navigate("Home")
+    }
 
     return (
         <View>
             <Text>Nome da Lista:</Text>
 
-            <TextInput placeholder="Lista: " value={name} onChangeText={setListName}/>
+            <TextInput placeholder="Item: " value={item} onChangeText={setItemName}/>
 
             {/* <Text>{name}</Text> */}
 
