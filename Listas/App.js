@@ -1,10 +1,9 @@
 import { View, StyleSheet } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useIsFocused } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import HomeScreen from './src/HomeScreen';
-import ListaNome from './src/ListaNome';
 import ListData from './src/ListData';
 import { useState } from 'react';
 
@@ -25,7 +24,6 @@ export default function App() {
         <Stack.Navigator>
 
           <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="ListaNome" component={ListaNome} />
           <Stack.Screen name="ListData" component={ListData} />
 
         </Stack.Navigator>
@@ -39,7 +37,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#679aeb',
   },
 });
 

@@ -4,5 +4,8 @@
     },
     "DATE": {
         "LISTDATE": "LISTDATE"
+    },
+    "ITEM": {
+        "LISTITEM": "LISTITEM"
     }
 }

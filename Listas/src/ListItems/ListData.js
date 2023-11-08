@@ -4,28 +4,28 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import metadata from './../storage.metadata.json';
 import { useIsFocused } from '@react-navigation/native';
 
-const ListData = ({ navigation}) => {
-    const [name, setListName] = useState("");
+const ListItems = ({ navigation}) => {
+    const [item, setItemName] = useState("");
     const isFocused = useIsFocused();
-    useEffect(() => { getListName() }, [isFocused]);
-    useEffect(() => { saveListName() }, [name]);
+    useEffect(() => { getItemName() }, [isFocused]);
+    // useEffect(() => { saveListName() }, [name]);
 
-    const getListName = async () => {
-        const listName = await AsyncStorage.getItem(metadata.NAME.LISTNAME);
-        if (listName) {
-            setListName(listName);
+    const getItemName = async () => {
+        const itemName = await AsyncStorage.getItem(metadata.ITEM.LISTITEM);
+        if (itemName) {
+            setItemName(itemName);
         }
     }
 
-    const saveListName = async () => {
-        const saveName = name || "";
-        await AsyncStorage.setItem(metadata.NAME.LISTNAME, saveName);
-    }
+    // const saveListName = async () => {
+    //     const saveName = name || "";
+    //     await AsyncStorage.setItem(metadata.NAME.LISTNAME, saveName);
+    // }
 
-    const handleClick = () => {
-        setListName(name);
-        navigation.navigate("ListData")
-    }
+    // const handleClick = () => {
+    //     setListName(name);
+    //     navigation.navigate("ListData")
+    // }
 
     return (
         <View>
@@ -44,4 +44,4 @@ const ListData = ({ navigation}) => {
     );
 }
 
-export default ListData;
+export default ListItems;
