@@ -32,7 +32,7 @@ const HomeScreen = ({ navigation }) => {
             <ScrollView>
                 <View style={styles.container}>
 
-                    <Text style={styles.title}>Home Screen</Text>
+                    <Text style={styles.title}>Minhas listas</Text>
 
                     <Button
                         title="Adicionar lista"
@@ -45,12 +45,11 @@ const HomeScreen = ({ navigation }) => {
                             return (
                                 <View style={styles.list}>
                                     <Text key={list}> {list} </Text>
-                                    <Text>data</Text>
-                                    <Button
+                                    {/* <Button
                                         title="editar"
                                         onPress={() => navigation.navigate("ListData")}
                                         color="#0d3575"
-                                    />
+                                    /> */}
 
                                     <Button
                                         title="excluir"
@@ -99,7 +98,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "space-between",
-        width: "80%",
+        justifyContent: "center",
+        width: "100%",
     },
 });

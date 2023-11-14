@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Text, TextInput, View } from "react-native";
+import { Button, Text, TextInput, View, StyleSheet } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import metadata from './../storage.metadata.json';
 import { useIsFocused } from '@react-navigation/native';
@@ -13,7 +13,7 @@ const ListData = ({ navigation}) => {
     const getListName = async () => {
         const listName = await AsyncStorage.getItem(metadata.NAME.LISTNAME);
         if (listName) {
-            setListName(listName);
+            setListName("");
         }
     }
 
@@ -24,19 +24,25 @@ const ListData = ({ navigation}) => {
 
     const handleClick = () => {
         setListName(name);
-        navigation.navigate("ListData")
+        navigation.navigate("Home")
     }
 
     return (
-        <View>
-            <Text>Nome da Lista:</Text>
+        <View style={styles.container}>
+            <Text style={styles.title}>Digite o nome da Lista:</Text>
 
-            <TextInput placeholder="Lista: " value={name} onChangeText={setListName}/>
+            <TextInput 
+                placeholder="... " 
+                value={name} 
+                onChangeText={setListName}
+                style={styles.input}
+            />
 
             {/* <Text>{name}</Text> */}
 
             <Button 
                 title='Salvar'
+                color={"#0d3575"}
                 onPress={handleClick}
             />
 
@@ -45,3 +51,23 @@ const ListData = ({ navigation}) => {
 }
 
 export default ListData;
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#679aeb',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        gap: 25,
+    },
+    title: {
+        color: "#bdd6fc",
+        fontSize: 25,
+        fontWeight: "bold",
+    },
+    input: {
+        backgroundColor: "#fff",
+        borderRadius: 8,
+        padding: 10,
+    },
+});
