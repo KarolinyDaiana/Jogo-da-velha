@@ -32,11 +32,12 @@ const HomeScreen = ({ navigation }) => {
             <ScrollView>
                 <View style={styles.container}>
 
-                    <Text style={styles.title}>Minhas listas</Text>
+                    <Text style={styles.title} >Minhas listas</Text>
 
                     <Button
                         title="Adicionar lista"
                         onPress={() => navigation.navigate("ListData")}
+                        style={styles.btAddLista}
                         color="#0d3575"
                     />
 
@@ -44,12 +45,11 @@ const HomeScreen = ({ navigation }) => {
                         {lists.map((list, index) => {
                             return (
                                 <View style={styles.list}>
-                                    <Text key={list}> {list} </Text>
-                                    {/* <Button
-                                        title="editar"
-                                        onPress={() => navigation.navigate("ListData")}
-                                        color="#0d3575"
-                                    /> */}
+                                    <Text 
+                                    onPress={() => navigation.navigate("ListItem")} 
+                                    key={list}>
+                                        {list} 
+                                    </Text>
 
                                     <Button
                                         title="excluir"

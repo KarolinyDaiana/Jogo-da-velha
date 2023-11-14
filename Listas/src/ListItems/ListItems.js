@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, Text, TextInput, View } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import metadata from './../storage.metadata.json';
+import metadata from '../storage.metadata.json';
 import { useIsFocused } from '@react-navigation/native';
 
 const ListItems = ({ navigation}) => {
@@ -31,14 +31,11 @@ const ListItems = ({ navigation}) => {
 
     return (
         <View>
-            <Text>Nome da Lista:</Text>
+            <Text>Itens da lista</Text>
 
-            <TextInput placeholder="Item: " value={item} onChangeText={setItemName}/>
-
-            {/* <Text>{name}</Text> */}
 
             <Button 
-                title='Salvar'
+                title='Adicionar item'
                 onPress={handleClick}
             />
 
