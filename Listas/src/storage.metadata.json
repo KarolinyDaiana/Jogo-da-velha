@@ -2,10 +2,8 @@
     "NAME": {
         "LISTNAME": "LISTNAME"
     },
-    "DATE": {
-        "LISTDATE": "LISTDATE"
-    },
     "ITEM": {
-        "LISTITEM": "LISTITEM"
+        "LISTITEM": "LISTITEM",
+        "ITEMLIST": "ITEMLIST"
     }
 }

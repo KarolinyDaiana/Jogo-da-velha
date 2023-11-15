@@ -15,7 +15,7 @@ const HomeScreen = ({ navigation }) => {
         const listName = await AsyncStorage.getItem(metadata.NAME.LISTNAME);
         if (listName) {
             setName(listName);
-            var tacaca = JSON.stringify(listName);
+            var tacaca = JSON.parse(listName);
             setLists([...lists, tacaca]);
             tacaca = "";
         }
@@ -23,8 +23,12 @@ const HomeScreen = ({ navigation }) => {
 
     const deleteList = (index) => {
         const updatedLists = [...lists];
-        updatedLists.splice(index, 1); // Remove o item da lista
-        setLists(updatedLists); // Atualiza o estado com a lista atualizada
+        updatedLists.splice(index, 1); 
+        setLists(updatedLists); 
+    }
+
+    const editList = (index) => {
+        navigation.navigate("ListData", { listIndex: index });
     }
 
     return (
@@ -45,23 +49,29 @@ const HomeScreen = ({ navigation }) => {
                         {lists.map((list, index) => {
                             return (
                                 <View style={styles.list}>
+
                                     <Text 
-                                    onPress={() => navigation.navigate("ListItem")} 
+                                    onPress={() => navigation.navigate("ListItems", {paramKey: list, })} 
                                     key={list}>
-                                        {list} 
+                                            {list} 
                                     </Text>
 
                                     <Button
-                                        title="excluir"
+                                        title="🗑️"
                                         color="#0d3575"
                                         onPress={() => deleteList(index)} 
+                                    /> 
+
+                                    <Button 
+                                        title="✏️"
+                                        color="#0d3575"
+                                        onPress={() => editList(index)}
                                     />
                                 </View>
                             );
                         })}
-                        <Text>
-                            {console.log(lists)}
-                        </Text>
+                        
+                        {console.log(lists)}
 
                     </View>
 
@@ -93,12 +103,13 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: "column",
         gap: 18,
+        alignItems: 'center',
+        justifyContent: 'space-between',
     },
     list: {
         flex: 1,
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "center",
-        width: "100%",
+        gap: 100,
     },
 });

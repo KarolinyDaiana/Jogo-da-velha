@@ -4,8 +4,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import metadata from './../storage.metadata.json';
 import { useIsFocused } from '@react-navigation/native';
 
-const ListData = ({ navigation}) => {
+const ListData = ({ navigation }) => {
+
     const [name, setListName] = useState("");
+    const [lists, setLists] = useState([])
+
     const isFocused = useIsFocused();
     useEffect(() => { getListName() }, [isFocused]);
     useEffect(() => { saveListName() }, [name]);
@@ -14,36 +17,47 @@ const ListData = ({ navigation}) => {
         const listName = await AsyncStorage.getItem(metadata.NAME.LISTNAME);
         if (listName) {
             setListName("");
+            // var tacaca = JSON.stringify(listName);
+            // setLists([...lists, tacaca]);
+            // tacaca = "";
         }
     }
-
+       
     const saveListName = async () => {
         const saveName = name || "";
-        await AsyncStorage.setItem(metadata.NAME.LISTNAME, saveName);
+        await AsyncStorage.setItem(metadata.NAME.LISTNAME, JSON.stringify(saveName));
     }
 
-    const handleClick = () => {
+    const saveList = () => {
         setListName(name);
         navigation.navigate("Home")
+    }
+
+    const editList = () => {
+        console.log("Editado");
     }
 
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Digite o nome da Lista:</Text>
 
-            <TextInput 
-                placeholder="... " 
-                value={name} 
+            <TextInput
+                placeholder="... "
+                value={name}
                 onChangeText={setListName}
                 style={styles.input}
             />
 
-            {/* <Text>{name}</Text> */}
-
-            <Button 
+            <Button
                 title='Salvar'
                 color={"#0d3575"}
-                onPress={handleClick}
+                onPress={saveList}
+            />
+
+            <Button
+                title='Editar'
+                color={"#0d3575"}
+                onPress={editList}
             />
 
         </View>
@@ -69,5 +83,6 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
         borderRadius: 8,
         padding: 10,
+        width: "90%",
     },
 });
