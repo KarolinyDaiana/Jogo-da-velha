@@ -7,7 +7,7 @@ import { useIsFocused } from '@react-navigation/native';
 const ListData = ({ navigation }) => {
 
     const [name, setListName] = useState("");
-    const [lists, setLists] = useState([])
+    // const [lists, setLists] = useState([])
 
     const isFocused = useIsFocused();
     useEffect(() => { getListName() }, [isFocused]);
