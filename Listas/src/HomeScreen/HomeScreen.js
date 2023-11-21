@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { Button, Text, View, StyleSheet, ScrollView } from "react-native";
 import { useIsFocused } from '@react-navigation/native';
 
+// npm install @react-navigation/native
+
 const HomeScreen = ({ navigation }) => {
     const [name, setName] = useState("");
     const isFocused = useIsFocused();
