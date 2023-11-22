@@ -17,10 +17,13 @@ const ListItems = ({ navigation, route }) => {
     const getItems = async () => {
         const itemName = await AsyncStorage.getItem(metadata.ITEM.LISTITEM);
         const itemList = await AsyncStorage.getItem(metadata.ITEM.ITEMLIST);
+
+        if (itemName && itemList == list) {    
             setItem(itemName);
             var tacaca = JSON.parse(itemName);
             setItems([...items, tacaca]);
-        
+            tacaca = "";
+        }
     }
 
     const deleteItem = (index) => {
