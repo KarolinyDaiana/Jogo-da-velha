@@ -91,7 +91,6 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        backgroundColor: '#679aeb',
         alignItems: 'center',
         justifyContent: 'flex-start',
         gap: 25,
